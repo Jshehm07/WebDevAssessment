@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./styles/hotel.css">
+        <title>Tourist Hotel Review</title>
+    </head>
+    <body>
+        <header>
+            <h1>Tell us about your hotel experience</h1>
+        </header>
+
+        <hr>
+        <img src="../assets/hotel-bg.png" alt="Hotel Background" id="Background">
+        
+        <form id="reviewForm">
+            <div class="section">
+                <div class="visitorInfo" id="nationality">
+                    <label for="nationalitySelect" class="mainLabel">Nationality:</label><br>
+                    <select name="nationality" id="nationalitySelect" required>
+                    <option value="" selected disabled>Select Nationality</option>
+                    <option value="Local">Local</option>
+                    <option value="Foreign">Foreign</option>
+                    </select><br><br>
+                </div>
+
+                <div class="visitorInfo" id="visitDate">
+                    <label for="dateInput" class="mainLabel">Visit Date:</label><br>
+                    <input type="date" name="date" id="dateInput" required><br><br>
+                </div>
+
+                <div class="experienceRating" id="cleanliness">
+                    <label class="mainLabel">Cleanliness:</label><br>
+                    
+                    <div class="stars">
+                      <input type="radio" id="star5" name="cleanliness" value="5" required />
+                      <label for="star5" title="5 stars">★</label>
+                  
+                      <input type="radio" id="star4" name="cleanliness" value="4" />
+                      <label for="star4" title="4 stars">★</label>
+                  
+                      <input type="radio" id="star3" name="cleanliness" value="3" />
+                      <label for="star3" title="3 stars">★</label>
+                  
+                      <input type="radio" id="star2" name="cleanliness" value="2" />
+                      <label for="star2" title="2 stars">★</label>
+                  
+                      <input type="radio" id="star1" name="cleanliness" value="1" />
+                      <label for="star1" title="1 star">★</label>
+                    </div>
+                </div>
+
+                <div class="experienceRating" id="amenities">
+                    <label class="mainLabel">Amenities:</label><br>
+                    <input type="checkbox" name="amenities" value="Restroom" id="restroom">
+                    <label for="restroom">Toiletries</label><br>
+
+                    <input type="checkbox" name="amenities" value="Changing Rooms" id="changingRooms">
+                    <label for="changingRooms">Bathroom</label><br>
+
+                    <input type="checkbox" name="amenities" value="Lifeguards" id="lifeguards">
+                    <label for="lifeguards">Appliances</label><br>
+
+                    <input type="checkbox" name="amenities" value="Restaurants" id="restaurants">
+                    <label for="restaurants">Room Services</label><br>
+
+                    <input type="checkbox" name="amenities" value="Wi-Fi Access" id="wifi">
+                    <label for="wifi">Wi-Fi Access</label><br><br>
+                </div>
+
+                <div class="experienceRating" id="comment">
+                    <label for="commentInput" class="mainLabel">Anything you'd like to add:</label><br>
+                    <textarea name="comment" id="commentInput" rows="4" cols="50"></textarea>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="button">
+                <input type="submit" value="Submit" id="submitButton">
+            </div>
+            
+        </form>
+
+        <div class="button">
+            <a href="./table.html">View Table</a>
+        </div>
+
+        <script>
+            document.getElementById("reviewForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+            
+                const nationality = document.getElementById("nationalitySelect").value;
+                const visitDate = document.getElementById("dateInput").value;
+                const cleanliness = document.querySelector('input[name="cleanliness"]:checked')?.value || "N/A";
+            
+                const amenitiesElements = document.querySelectorAll('input[name="amenities"]:checked');
+                const amenities = Array.from(amenitiesElements).map(e => e.nextElementSibling.textContent).join(", ");
+            
+                const comment = document.getElementById("commentInput").value;
+            
+                const feedback = {
+                    premise: "Hotel",
+                    nationality,
+                    visitDate,
+                    cleanliness,
+                    amenities,
+                    comment
+                };
+            
+                let storedFeedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+                storedFeedbacks.push(feedback);
+                localStorage.setItem("feedbacks", JSON.stringify(storedFeedbacks));
+            
+                window.location.href = "./table.html";
+            });
+            </script>
+    </body>
+</html>

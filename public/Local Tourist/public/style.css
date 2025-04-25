@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color:#06202B;
+    color: #06202B;
+    overflow-x: hidden;
+}
+
+#BackgroundPhoto {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-family: "Special Gothic Condensed One";
+    background-color: #7AE2CF;
+    font-size: 180%;
+}
+
+.header h1 {
+    margin: 20px;
+}
+
+hr {
+    height: 10px;
+    width: 100%;
+    background-color: #06202B;
+    border: none;
+    margin: 0;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#sectionOne {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+#sectionOne p {
+    margin: 3%;
+}
+
+#sectionTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Special Gothic Condensed One", "Montserrat";
+}
+
+#sectionTwo > h2 {
+    font-size: 250%;
+    margin-top: 0;
+}
+
+#sectionTwo > p {
+    font-family: "Montserrat";
+}
+
+.choices {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.option {
+    padding: 1.5%;
+    background-color: #7AE2CF;
+    border-radius: 10%;
+    margin: 1%;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, cursor 0.3s ease; 
+    color: black;
+    text-decoration: none;
+}
+
+.option:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+.photo {
+    border-radius: 10%;
+    max-height: 200px;
+    max-width: 400px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    font-family: "Montserrat";
+}
+
+.button a {
+    background-color: #7AE2CF;
+    color: #06202B;
+    border: 3px solid #06202B;
+    margin: 1%;
+    padding: 1.3%;
+    border-radius: 10%;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, cursor 0.3s ease; 
+}
+
+.button a:hover {
+    transform: scale(1.05);
+    background-color: #74d6c4;
+    cursor: pointer;
+}
+
+.button a:active {
+    transform: scale(1.05);
+    background-color: #6ac3b3;
+    cursor: pointer;
+}
+
+
+  

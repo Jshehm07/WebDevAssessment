@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/table.css">
+    <title>Tourist Feedback Table</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Sistema sa Feedback ng mga Turista</h1>
+    </header>
+
+    <hr>
+
+    <img src="../assets/background.png" alt="Background Photo" id="BackgroundPhoto">
+    
+    <table border="1">
+        <tr>
+            <th>Serbisyong Sinuri</th>
+            <th>Nasyonalidad</th>
+            <th>Araw ng Pagbisita</th>
+            <th>Kalinisan</th>
+            <th>Kumbenyensiya</th>
+            <th>Karagdagan</th>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+
+    <div class="return">
+        <a href="../index-fil.html">Bumalik</a>
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const table = document.querySelector("table");
+            const storedFeedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+        
+            storedFeedbacks.forEach(entry => {
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>${entry.premise}</td>
+                    <td>${entry.nationality}</td>
+                    <td>${entry.visitDate}</td>
+                    <td>${entry.cleanliness}</td>
+                    <td>${entry.amenities}</td>
+                    <td>${entry.comment}</td>
+                `;
+            });
+        });
+        </script>
+        
+</body>
+</html>
